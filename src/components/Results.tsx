@@ -1,15 +1,22 @@
 import { motion } from "framer-motion";
+import { State } from '../hooks/useEngine';
+
 import { formatPercentage } from "../utils/helpers";
 
-const Results = ({ errors, accuracyPercentage, total, className 
-}: {errors: number; accuracyPercentage: number; total: number; className: string}) => {
+const Results = ({ state, errors, accuracyPercentage, total, className 
+}: {state: State, errors: number; accuracyPercentage: number; total: number; className: string}) => {
+    
+    if (state !== "finish") {
+        return null;
+      }
+    
     const initial = { opacity: 0 };
     const animate = { opacity: 1 };
     const duration = { duration: 0.3 };
 
     return (
         <motion.ul 
-            className={`flex flex-col items-center text-primary-500 space-y-3 ${className}`}
+            className={`flex flex-col items-center text-primary-400 space-y-3 ${className}`}
         >
             <motion.li 
                 className="text-xl font-semibold"
@@ -28,7 +35,7 @@ const Results = ({ errors, accuracyPercentage, total, className
                 Accuracy: {formatPercentage(accuracyPercentage)}
             </motion.li>
             <motion.li 
-                className="text-red-500"
+                // className="text-red-500"
                 initial={initial}
                 animate={animate}
                 transition={{...duration, delay: 1 }}

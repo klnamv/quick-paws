@@ -1,22 +1,38 @@
-import { faker } from '@faker-js/faker';
+import React from 'react';
+import useEngine from "./hooks/useEngine";
 import GeneratedWords from "./components/GeneratedWords";
 import CountdownTimer from './components/CountdownTimer';
 import RestartButton from './components/RestartButton';
 import Results from './components/Results';
 import UserTyping from './components/UserTyping';
+import WordsContainer from './components/WordsContainer';
+import { calculateAccuracyPercentage } from './utils/helpers';
 
-const words = faker.random.words(10);
+const App = () => {
+  const { state, words, timeLeft, errors, typed, restart, totalTyped } = useEngine();
 
-function App() {
   return (
     <>
-      <CountdownTimer timeLeft={30} />
-      <div className="relative text-3xl max-w-xl leading-relaxed break-all mt-3">
+      <CountdownTimer timeLeft={timeLeft} />
+      <WordsContainer >
         <GeneratedWords words={words} />
-        <UserTyping className="absolute inset-0" userInput={words} />
-      </div>
-      <RestartButton className={'mx-auto mt-10 text-slate-500'} onRestart={() => null} />
-      <Results errors={10} accuracyPercentage={100} total={200} className={'mt-10'} />
+        <UserTyping 
+          className="absolute inset-0"
+          words={words}
+          userInput={typed}
+        />
+      </WordsContainer>
+      <RestartButton 
+        className={'mx-auto mt-10 text-slate-200'} 
+        onRestart={restart} 
+      />
+      <Results 
+        state={state}
+        errors={errors} 
+        accuracyPercentage={calculateAccuracyPercentage(errors, totalTyped)} 
+        total={totalTyped} 
+        className={'mt-10'} 
+      />
     </>
   )
 }
