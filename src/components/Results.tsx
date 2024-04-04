@@ -16,7 +16,7 @@ const Results = ({ state, errors, accuracyPercentage, total, className
 
     return (
         <motion.ul 
-            className={`flex flex-col items-center text-primary-400 space-y-3 ${className}`}
+            className={`flex flex-col items-center text-pink-600 space-y-3 ${className}`}
         >
             <motion.li 
                 className="text-xl font-semibold"
@@ -35,7 +35,6 @@ const Results = ({ state, errors, accuracyPercentage, total, className
                 Accuracy: {formatPercentage(accuracyPercentage)}
             </motion.li>
             <motion.li 
-                // className="text-red-500"
                 initial={initial}
                 animate={animate}
                 transition={{...duration, delay: 1 }}

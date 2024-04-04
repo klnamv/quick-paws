@@ -1,7 +1,7 @@
 
 const WordsContainer = ({ children }: {children: React.ReactNode }) => {
     return (
-        <div className="relative text-xl max-w-5xl leading-relaxed break-all mt-5">
+        <div className="relative text-xl max-w-4xl leading-relaxed break-all mt-3">
             {children}
         </div>
     )
