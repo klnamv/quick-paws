@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { State } from '../hooks/useEngine';
-
 import { formatPercentage } from "../utils/helpers";
 
 const Results = ({ state, errors, accuracyPercentage, total, className 
@@ -16,7 +15,7 @@ const Results = ({ state, errors, accuracyPercentage, total, className
 
     return (
         <motion.ul 
-            className={`flex flex-col items-center text-pink-600 space-y-3 ${className}`}
+            className={`flex flex-col items-center text-purple-600 space-y-3 ${className}`}
         >
             <motion.li 
                 className="text-xl font-semibold"
@@ -30,8 +29,7 @@ const Results = ({ state, errors, accuracyPercentage, total, className
                 initial={initial}
                 animate={animate}
                 transition={{...duration, delay: 0.5 }}
-            >
-                
+            >   
                 Accuracy: {formatPercentage(accuracyPercentage)}
             </motion.li>
             <motion.li 

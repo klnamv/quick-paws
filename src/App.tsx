@@ -9,7 +9,7 @@ import WordsContainer from './components/WordsContainer';
 import { calculateAccuracyPercentage } from './utils/helpers';
 
 const App = () => {
-  const { state, words, timeLeft, errors, typed, restart, totalTyped } = useEngine();
+  const { words, typed, timeLeft, errors, state, restart, totalTyped } = useEngine();
 
   return (
     <>

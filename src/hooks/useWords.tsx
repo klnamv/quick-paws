@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { useState, useCallback } from  'react';
 
 const generateWords = (count: number) => {
-    return faker.random.words(count).toLowerCase();
+    return faker.lorem.words(count).toLowerCase();
 };
 
 const useWords = (count: number) =>{

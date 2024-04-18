@@ -6,7 +6,7 @@ import useCauntdownTimer from './useCountdownTimer';
 
 export type State = 'start' | 'run' | 'finish';
 
-const NUMBER_OF_WORDS = 40;
+const NUMBER_OF_WORDS = 30;
 const COUNTDOWN_SECONDS = 30;
  
 const useEngine = () => {
@@ -33,11 +33,14 @@ const useEngine = () => {
     }, [clearTyped, updateWords, resetCountdown, resetTotalTyped]);
 
     const sumErrors = useCallback(() => {
-      debug(`cursor: ${cursor} - words.length: ${words.length}`);
-      const wordsReached = words.substring(0, Math.min(cursor, words.length));
+      const currentLength = typed.length; // Assuming 'typed' is the current text the user has inputted
+      debug(`cursor: ${currentLength} - words.length: ${words.length}`);
+      const wordsReached = words.substring(0, currentLength); // Use the length of 'typed' to determine the substring
+      console.log(`wordsReached: ${wordsReached}`);
       setErrors((prevErrors) => prevErrors + countErrors(typed, wordsReached));
-    }, [typed, words, cursor]);
-    
+      console.log(`setErrors: ${words}`);
+  }, [typed, words]);
+      
     useEffect(() => {
       if (isStarting) {
         setState("run");
