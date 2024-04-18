@@ -33,12 +33,10 @@ const useEngine = () => {
     }, [clearTyped, updateWords, resetCountdown, resetTotalTyped]);
 
     const sumErrors = useCallback(() => {
-      const currentLength = typed.length; // Assuming 'typed' is the current text the user has inputted
+      const currentLength = typed.length;
       debug(`cursor: ${currentLength} - words.length: ${words.length}`);
-      const wordsReached = words.substring(0, currentLength); // Use the length of 'typed' to determine the substring
-      console.log(`wordsReached: ${wordsReached}`);
+      const wordsReached = words.substring(0, currentLength); 
       setErrors((prevErrors) => prevErrors + countErrors(typed, wordsReached));
-      console.log(`setErrors: ${words}`);
   }, [typed, words]);
       
     useEffect(() => {

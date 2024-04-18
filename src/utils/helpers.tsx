@@ -12,11 +12,7 @@ export const isKeyboardCodeAllowed = (code: string) => {
 };
 
 export const countErrors = (actual: string, expected: string) => {
-    console.log(`actual: ${actual}`);
-    console.log(`expected: ${expected}`);
     const expectedCharacters = expected.split('');
-    console.log(`expectedCharacters: ${expectedCharacters}`);
-
     return expectedCharacters.reduce((errors, expectedChar, i) => {
         const actualChar = actual[i] || '';
         if (actualChar !== expectedChar) {
